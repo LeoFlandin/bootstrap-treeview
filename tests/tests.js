@@ -213,6 +213,25 @@
 
 	});
 
+	test('Accept function as text element', function() {
+		var dataWithFunction = [
+			{
+				text: function(node){ return "Parent " + node.nodeId},
+				nodes: [
+					{
+						text: function(node){ return "Child " + node.nodeId},
+					},
+					{
+						text: "simple static text",
+					}
+				]
+			}
+		];
+		var el = init({levels:2,data:dataWithFunction});
+		equal($(el.selector + ' li').get(0).textContent, "Parent 0", 'Correct text evaluation on render');
+		equal($(el.selector + ' li').get(1).textContent, "Child 1", 'Correct text evaluation on render');
+		equal($(el.selector + ' li').get(2).textContent, "simple static text", 'Correct text without function evaluation');
+	});
 
 	module('Behaviour');
 

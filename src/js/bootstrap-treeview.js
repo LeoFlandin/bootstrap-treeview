@@ -587,13 +587,13 @@
 				treeItem
 					.append($(_this.template.link)
 						.attr('href', node.href)
-						.append(node.text)
+						.append(typeof node.text === "function" ? node.text(node) : node.text)
 					);
 			}
 			else {
 				// otherwise just text
 				treeItem
-					.append(node.text);
+					.append(typeof node.text === "function" ? node.text(node) : node.text);
 			}
 
 			// Add tags as badges
