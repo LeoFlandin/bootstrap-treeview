@@ -142,7 +142,11 @@
 
 			// Search methods
 			search: $.proxy(this.search, this),
-			clearSearch: $.proxy(this.clearSearch, this)
+			clearSearch: $.proxy(this.clearSearch, this),
+
+			// Data methods
+			getData: $.proxy(this.getData, this)
+
 		};
 	};
 
@@ -1205,6 +1209,10 @@
 				return undefined;
 			}
 		}
+	};
+
+	Tree.prototype.getData = function () {
+		return this.tree;
 	};
 
 	var logError = function (message) {

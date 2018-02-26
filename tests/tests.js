@@ -891,4 +891,17 @@
 		ok(onWorked, 'searchCleared was fired');
 	});
 
+	test('getData', function(){
+		var $tree = init({
+			data: data,
+			onSearchCleared: function(/*event, results*/) {
+				cbWorked = true;
+			}
+		});
+
+		var retreivedData = $tree.treeview('getData', []);
+		equal(data.text, retreivedData.text);
+		
+	});
+
 }());
